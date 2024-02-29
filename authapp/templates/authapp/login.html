@@ -1,0 +1,34 @@
+{% extends 'authapp/base.html' %} 
+{% load static %}               
+ 
+{% block content %}
+<div class="auth-content">
+                        <div class="card has-shadow rounded-15 py-4 px-2">
+                            <div class="card-body">
+                                <h3 class="fw-normal text-center mb-4">Login to your account</h3>
+                                <form action="verification.html" class="needs-validation" novalidate>
+                                    <div class="mb-3">
+                                        <label for="validationEmail" class="form-label fw-normal font-size-14">Email address</label>
+                                        <input type="email" name="validationEmail" class="form-control" placeholder="dayo.abdullahi@gmail.com" pattern="[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+" required>
+                                        <div class="invalid-feedback">Enter valid email address.</div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="validationPassword" class="form-label fw-normal font-size-14">Password</label>
+                                        <input type="password" name="validationPassword" class="form-control" placeholder="Please enter your password" minlength="8" required>
+                                        <div class="invalid-feedback">Invalid password.</div>
+                                    </div>
+                                    <div class="text-center mb-4">
+                                        <a href="{% url 'reset-password'%}" class="fw-normal font-size-14">Can't remember your password?.</a>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary fw-semibold rounded-10 w-100">Sign In</button>
+                                </form>
+                                <p class="font-size-14 text-muted text-center mt-4 mb-0">New user? <a href="{% url 'register' %}" class="text-primary">Create account</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    {% endblock%}

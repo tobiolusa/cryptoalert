@@ -1,0 +1,68 @@
+{% extends 'authapp/base.html'%}
+{% block content %}
+<div class="auth-content">
+    <div class="card has-shadow rounded-15 py-4 px-2">
+        <div class="card-body">
+            <h3 class="fw-normal text-center mb-4">Create Account</h3>
+            <form action="verify-email.html" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="validationEmail" class="form-label fw-normal font-size-14">Email Address</label>
+                    <input type="email" name="validationEmail" class="form-control"
+                        placeholder="dayo.abdullahi@gmail.com"
+                        pattern="[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+" required>
+                    <div class="invalid-feedback">Enter valid email address.</div>
+                </div>
+
+                <!-- First Name -->
+                <div class="mb-4">
+                    <label for="validationFirstName" class="form-label fw-normal font-size-14">First Name</label>
+                    <input type="text" id="validationFirstName" name="validationFirstName" class="form-control"
+                        placeholder="Please enter your first name" required>
+                    <div class="invalid-feedback">Please enter your first name.</div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="validationlastName" class="form-label fw-normal font-size-14">Last Name</label>
+                    <input type="text" id="validationlastName" name="validationlastName" class="form-control"
+                        placeholder="Please enter your last name" required>
+                    <div class="invalid-feedback">Please enter your last name.</div>
+                </div>
+
+                <!-- Phone Number -->
+                <div class="mb-4">
+                    <label for="validationPhoneNumber" class="form-label fw-normal font-size-14">Phone Number</label>
+                    <input type="tel" id="validationPhoneNumber" name="validationPhoneNumber" class="form-control"
+                        placeholder="Please enter your phone number" pattern="[0-9]{10}" required>
+                    <div class="invalid-feedback">Please enter a valid 10-digit phone number.</div>
+                </div>
+
+        
+
+                <div class="mb-4">
+                    <label for="validationPassword" class="form-label fw-normal font-size-14">Password</label>
+                    <input type="password" name="validationPassword" class="form-control"
+                        placeholder="Please enter your password" minlength="8" required>
+                    <div class="invalid-feedback">Must contain at least 8 characters.</div>
+                </div>
+                <div class="row mb-4 gx-3">
+                    <div class="col-auto">
+                        <input type="checkbox" name="validationCheck" class="form-check-input mt-2" required>
+                    </div>
+                    <div class="col">
+                        <p class="fw-normal font-size-13" for="validationCheck">By creating an account you agree to our
+                            <a href="#!" class="text-info">Terms and Conditions</a> and <a href="#!"
+                                class="text-info">Data Protection Guidelines.</a></p>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary fw-semibold rounded-10 w-100">Next</button>
+            </form>
+            <p class="font-size-14 text-muted text-center mt-4 mb-0">Already registered? <a href="{% url 'login' %}"
+                    class="text-primary">Login</a></p>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+{% endblock %}
