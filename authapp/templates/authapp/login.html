@@ -30,6 +30,7 @@
                                     <div class="text-center mb-4">
                                         <a href="{% url 'reset-password'%}" class="fw-normal font-size-14">Can't remember your password?.</a>
                                     </div>
+                                    <input type="hidden" name="next" value="{{ next }}">
                                     <button type="submit" class="btn btn-primary fw-semibold rounded-10 w-100">Sign In</button>
                                 </form>
                                 <p class="font-size-14 text-muted text-center mt-4 mb-0">New user? <a href="{% url 'register' %}" class="text-primary">Create account</a></p>

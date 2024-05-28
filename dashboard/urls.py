@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import path
-from dashboard.views import chart 
+from dashboard import views 
 
 urlpatterns = [
-    path('', chart, name="chart"), 
+    path('', views.chart, name="chart"), 
     
 ]
