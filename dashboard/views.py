@@ -1,8 +1,10 @@
 import requests
 from django.shortcuts import render
 from datetime import date, timedelta
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def chart(request):
     
     datetime_today = date.today()
