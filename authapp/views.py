@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django import forms
 from dashboard import views
+from django.contrib.auth.decorators import login_required
 
 def loginuser(request):
     if request.method == 'POST':
@@ -12,7 +13,7 @@ def loginuser(request):
 
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            authenticate(user)
+            login(request, user)
             messages.success(request, 'you have successfully logged in')
             return redirect('chart')
         else:
@@ -50,7 +51,7 @@ def register(request):
 
 def logout_user(request):
     logout(request)
-    return redirect('/')
+    return redirect('loginuser')
 
 def reset_password(request):
     return render(request, "authapp/reset-password.html")
