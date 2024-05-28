@@ -4,7 +4,8 @@
     <div class="card has-shadow rounded-15 py-4 px-2">
         <div class="card-body">
             <h3 class="fw-normal text-center mb-4">Create Account</h3>
-            <form action="verify-email.html" class="needs-validation" novalidate>
+            <form action="verify-email.html" method="POST" class="needs-validation" novalidate>
+                {% csrf_token %}
                 <div class="mb-3">
                     <label for="validationEmail" class="form-label fw-normal font-size-14">Email Address</label>
                     <input type="email" name="validationEmail" class="form-control"
