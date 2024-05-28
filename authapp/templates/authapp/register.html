@@ -4,44 +4,42 @@
     <div class="card has-shadow rounded-15 py-4 px-2">
         <div class="card-body">
             <h3 class="fw-normal text-center mb-4">Create Account</h3>
-            <form action="verify-email.html" method="POST" class="needs-validation" novalidate>
+            <form method="POST" class="needs-validation" novalidate>
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="validationEmail" class="form-label fw-normal font-size-14">Email Address</label>
-                    <input type="email" name="validationEmail" class="form-control"
-                        placeholder="dayo.abdullahi@gmail.com"
+                    <input type="email" name="email" id="email" class="form-control"
+                        placeholder="adekunle.bayo@gmail.com"
                         pattern="[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+" required>
                     <div class="invalid-feedback">Enter valid email address.</div>
+                </div>
+
+                <!--  UserName -->
+                <div class="mb-4">
+                    <label for="username" class="form-label fw-normal font-size-14">Username</label>
+                    <input type="text" id="username" name="username" class="form-control"
+                        placeholder="Please enter your username" required>
+                    <div class="invalid-feedback">Please enter your usernamename.</div>
                 </div>
 
                 <!-- First Name -->
                 <div class="mb-4">
                     <label for="validationFirstName" class="form-label fw-normal font-size-14">First Name</label>
-                    <input type="text" id="validationFirstName" name="validationFirstName" class="form-control"
+                    <input type="text" id="first_name" name="first_name" class="form-control"
                         placeholder="Please enter your first name" required>
                     <div class="invalid-feedback">Please enter your first name.</div>
                 </div>
 
                 <div class="mb-4">
                     <label for="validationlastName" class="form-label fw-normal font-size-14">Last Name</label>
-                    <input type="text" id="validationlastName" name="validationlastName" class="form-control"
+                    <input type="text" id="last_name" name="last_name" class="form-control"
                         placeholder="Please enter your last name" required>
                     <div class="invalid-feedback">Please enter your last name.</div>
                 </div>
 
-                <!-- Phone Number -->
-                <div class="mb-4">
-                    <label for="validationPhoneNumber" class="form-label fw-normal font-size-14">Phone Number</label>
-                    <input type="tel" id="validationPhoneNumber" name="validationPhoneNumber" class="form-control"
-                        placeholder="Please enter your phone number" pattern="[0-9]{10}" required>
-                    <div class="invalid-feedback">Please enter a valid 10-digit phone number.</div>
-                </div>
-
-        
-
                 <div class="mb-4">
                     <label for="validationPassword" class="form-label fw-normal font-size-14">Password</label>
-                    <input type="password" name="validationPassword" class="form-control"
+                    <input type="password" name="password"  id="password" class="form-control"
                         placeholder="Please enter your password" minlength="8" required>
                     <div class="invalid-feedback">Must contain at least 8 characters.</div>
                 </div>
@@ -55,8 +53,17 @@
                                 class="text-info">Data Protection Guidelines.</a></p>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary fw-semibold rounded-10 w-100">Next</button>
+                <button type="submit" class="btn btn-primary fw-semibold rounded-10 w-100">Register</button>
             </form>
+
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
             <p class="font-size-14 text-muted text-center mt-4 mb-0">Already registered? <a href="{% url 'login' %}"
                     class="text-primary">Login</a></p>
         </div>
