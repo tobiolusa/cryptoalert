@@ -8,15 +8,15 @@
             <form method="POST" class="needs-validation" novalidate>
                 {% csrf_token %}
 
-        <div class="alert alert-primary" role="alert">
+        
             {% if messages %}
                 <ul>
                     {% for message in messages %}
-                      <p> {{ message }} </p> 
+                      <p class="alert alert-primary"> {{ message }} </p> 
                     {% endfor %}
                 </ul>
             {% endif %}
-            </div>
+           
                 
                 <div class="mb-3">
                     <label for="validationEmail" class="form-label fw-normal font-size-14">Email Address</label>
@@ -70,7 +70,7 @@
 
            
         
-            <p class="font-size-14 text-muted text-center mt-4 mb-0">Already registered? <a href="{% url 'login' %}"
+            <p class="font-size-14 text-muted text-center mt-4 mb-0">Already registered? <a href="{% url 'loginuser' %}"
                     class="text-primary">Login</a></p>
         </div>
     </div>

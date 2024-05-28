@@ -1,10 +1,23 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django import forms
+from dashboard import views
 
-def index(request):
+def loginuser(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            authenticate(user)
+            messages.success(request, 'you have successfully logged in')
+            return redirect('chart')
+        else:
+            messages.error(request, 'Invalid username and Password.')
+        
     return render(request, "authapp/login.html")
 
 def register(request):
@@ -32,8 +45,12 @@ def register(request):
                 )
                 login(request, user)
                 messages.success(request, 'Account Created Successfully.')
-                return redirect('login')
+                return redirect('loginuser')
     return render(request, "authapp/register.html")
+
+def logout_user(request):
+    logout(request)
+    return redirect('/')
 
 def reset_password(request):
     return render(request, "authapp/reset-password.html")
