@@ -67,5 +67,17 @@
                     <script src="{% static 'js/pages/validation.init.js'%}"></script>
                     <script src="{% static 'libs/pace/js/pace.min.js'%}"></script>
                     <script src="{% static 'js/app.min.js'%}"></script>
+
+                    <script>
+                        // JavaScript to make messages disappear after 3 seconds
+                        document.addEventListener('DOMContentLoaded', function() {
+                            setTimeout(function() {
+                                var messages = document.getElementById('messages');
+                                if (messages) {
+                                    messages.style.display = 'none';
+                                }
+                            }, 3000);
+                        });
+                    </script>
                 </body>
                 </html>
