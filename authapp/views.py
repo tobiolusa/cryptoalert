@@ -19,9 +19,9 @@ def register(request):
             messages.error("Please fill out all fields")
         else:
             if User.objects.filter(username=username).exists():
-                messages.error("Username already existed. ")
+                messages.error(request, "Username already existed. ")
             elif User.objects.filter(email=email).exists():
-                messages.error("Email address already existed")
+                messages.error(request, "Email address already existed")
             else:
                 user = User.objects.create_user(
                     email=username,

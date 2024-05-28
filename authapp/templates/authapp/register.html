@@ -4,8 +4,20 @@
     <div class="card has-shadow rounded-15 py-4 px-2">
         <div class="card-body">
             <h3 class="fw-normal text-center mb-4">Create Account</h3>
+        
             <form method="POST" class="needs-validation" novalidate>
                 {% csrf_token %}
+
+        <div class="alert alert-primary" role="alert">
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                      <p> {{ message }} </p> 
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            </div>
+                
                 <div class="mb-3">
                     <label for="validationEmail" class="form-label fw-normal font-size-14">Email Address</label>
                     <input type="email" name="email" id="email" class="form-control"
@@ -56,13 +68,7 @@
                 <button type="submit" class="btn btn-primary fw-semibold rounded-10 w-100">Register</button>
             </form>
 
-            {% if messages %}
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+           
         
             <p class="font-size-14 text-muted text-center mt-4 mb-0">Already registered? <a href="{% url 'login' %}"
                     class="text-primary">Login</a></p>
