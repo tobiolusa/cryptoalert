@@ -4,9 +4,11 @@ from datetime import date, timedelta
 from django.contrib.auth.decorators import login_required
 from authapp import views
 
+
 # Create your views here.
 @login_required
 def wallet(request):
+    pass
     return render(request, 'dashboard/wallet.html')
 
 @login_required

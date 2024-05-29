@@ -297,6 +297,14 @@
                                         <div class="col-auto"><i class="maskify iconly-Hide icbo font-size-16"></i></div>
                                     </div>
                                     <h3 class="masked fw-medium mt-3 mb-0">$456.00</h3>
+                                    {% if data.error %}
+                                    <p>{{ data.error }}</p>
+                                {% else %}
+                                    <ul>
+                                        <li>Bitcoin: ${{ price }}</li>
+                                       
+                                    </ul>
+                                {% endif %}
                                 </div>
                                 <!-- end card body -->
                             </div>
