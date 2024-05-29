@@ -10,6 +10,7 @@ from django.contrib.auth import logout
 @login_required
 def wallet(request):
     api_url = 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,BNB,SOL&tsyms=USD'
+    api_historial = 'https://min-api.cryptocompare.com/data/v2/histohour?fsym=BTC&tsym=USD&limit=20'
     try:
         response = requests.get(api_url)
         response.raise_for_status()
@@ -25,7 +26,6 @@ def wallet(request):
         bnb_price = 'price not available'
         sol_price = 'price not available'
         
-
     context ={'btc_price': btc_price, 'eth_price': eth_price, 'bnb_price': bnb_price, 'sol_price': sol_price}
     return render(request, 'dashboard/wallet.html', context)
 
