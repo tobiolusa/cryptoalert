@@ -4,6 +4,9 @@ from datetime import date, timedelta
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+def wallet(request):
+    return render(request, 'dashboard/wallet.html')
+
 @login_required
 def chart(request):
     

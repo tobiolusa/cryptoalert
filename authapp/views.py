@@ -15,7 +15,7 @@ def loginuser(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'you have successfully logged in')
-            return redirect('chart')
+            return redirect('wallet')
         else:
             messages.error(request, 'Invalid username and Password.')
         
