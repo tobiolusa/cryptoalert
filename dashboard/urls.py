@@ -4,5 +4,5 @@ from dashboard import views
 
 urlpatterns = [
     path('', views.wallet, name="wallet"),
-    
+    path('chart/', views.chart, name="chart"),
 ]

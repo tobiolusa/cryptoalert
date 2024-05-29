@@ -10,7 +10,7 @@
                 <div class="d-flex">
                     <!-- LOGO -->
                     <div class="navbar-brand-box">
-                        <a href="dashboard.html" class="logo logo-dark">
+                        <a href="#" class="logo logo-dark">
                             <span class="logo-sm">
                                 <img src="{% static 'assets/images/brands/logo.svg'%}" alt="" height="24" />
                             </span>
@@ -195,7 +195,7 @@
                             </a>
                             
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{url 'logout'}  ">
+                            <a class="dropdown-item" href="{%url 'logout'%}  ">
                                 <i class="bx bx-log-out-circle font-size-16 align-middle me-1"></i> Logout
                             </a>
                         </div>
@@ -212,19 +212,19 @@
                     <!-- Left Menu Start -->
                     <ul class="metismenu list-unstyled" id="side-menu">
                         <li>
-                            <a href="dashboard.html">
+                            <a href="#">
                                 <i class="bx bx-home"></i>
                                 <span data-key="t-overview">Overview</span>
                             </a>
                         </li>
                         <li>
-                            <a href="beneficiaries.html">
+                            <a href="#">
                                 <i class="bx bx-user-circle"></i>
                                 <span data-key="t-beneficiaries">Beneficiaries</span>
                             </a>
                         </li>
                         <li>
-                            <a href="transactions.html">
+                            <a href="#">
                                 <i class="bx bx-wallet"></i>
                                 <span data-key="t-transactions">Transactions</span>
                             </a>
@@ -264,7 +264,7 @@
                                         <div class="col font-size-14">Bitcoin</div>
                                         <div class="col-auto"><i class="maskify iconly-Hide icbo font-size-16"></i></div>
                                     </div>
-                                    <h3 class="masked fw-medium mt-3 mb-0">$1,234.00</h3>
+                                    <h3 class="masked fw-medium mt-3 mb-0">${{ btc_price }}</h3>
                                 </div>
                                 <!-- end card body -->
                             </div>
@@ -280,7 +280,7 @@
                                         <div class="col font-size-14">Etherum </div>
                                         <div class="col-auto"><i class="maskify iconly-Hide icbo font-size-16"></i></div>
                                     </div>
-                                    <h3 class="masked fw-medium mt-3 mb-0">$1,234.00</h3>
+                                    <h3 class="masked fw-medium mt-3 mb-0">${{eth_price}}</h3>
                                 </div>
                                 <!-- end card body -->
                             </div>
@@ -296,15 +296,8 @@
                                         <div class="col font-size-14">BNB</div>
                                         <div class="col-auto"><i class="maskify iconly-Hide icbo font-size-16"></i></div>
                                     </div>
-                                    <h3 class="masked fw-medium mt-3 mb-0">$456.00</h3>
-                                    {% if data.error %}
-                                    <p>{{ data.error }}</p>
-                                {% else %}
-                                    <ul>
-                                        <li>Bitcoin: ${{ price }}</li>
-                                       
-                                    </ul>
-                                {% endif %}
+                                    <h3 class="masked fw-medium mt-3 mb-0">${{ bnb_price }}</h3>
+                                  
                                 </div>
                                 <!-- end card body -->
                             </div>
@@ -317,10 +310,10 @@
                                 <!-- card body -->
                                 <div class="card-body">
                                     <div class="row align-items-center">
-                                        <div class="col font-size-14">Dogecoin</div>
+                                        <div class="col font-size-14">Solana</div>
                                         <div class="col-auto"><i class="maskify iconly-Hide icbo font-size-16"></i></div>
                                     </div>
-                                    <h3 class="masked fw-medium mt-3 mb-0">$456.00</h3>
+                                    <h3 class="masked fw-medium mt-3 mb-0">${{sol_price}}</h3>
                                 </div>
                                 <!-- end card body -->
                             </div>

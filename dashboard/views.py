@@ -1,15 +1,33 @@
 import requests
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from datetime import date, timedelta
 from django.contrib.auth.decorators import login_required
 from authapp import views
+from django.contrib.auth import logout
 
 
 # Create your views here.
 @login_required
 def wallet(request):
-    pass
-    return render(request, 'dashboard/wallet.html')
+    api_url = 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,BNB,SOL&tsyms=USD'
+    try:
+        response = requests.get(api_url)
+        response.raise_for_status()
+        api_response = response.json()
+        btc_price = api_response.get('BTC', {}).get('USD')
+        eth_price = api_response.get('ETH', {}).get('USD')
+        bnb_price = api_response.get('BNB', {}).get('USD')
+        sol_price = api_response.get('SOL', {}).get('USD')
+
+    except requests.exceptions.RequestException as e:
+        btc_price = 'price not available'
+        eth_price = 'price not available'
+        bnb_price = 'price not available'
+        sol_price = 'price not available'
+        
+
+    context ={'btc_price': btc_price, 'eth_price': eth_price, 'bnb_price': bnb_price, 'sol_price': sol_price}
+    return render(request, 'dashboard/wallet.html', context)
 
 @login_required
 def chart(request):
@@ -33,4 +51,8 @@ def chart(request):
     context = {
         'price': btc_prices_range
     }
-    return render(request, 'chart.html', context)
+    return render(request, 'dashboard/chart.html', context)
+
+def logout_user(request):
+    logout(user)
+    return redirect('loginuser')
