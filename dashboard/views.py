@@ -2,14 +2,15 @@ import requests
 from django.shortcuts import render
 from datetime import date, timedelta
 from django.contrib.auth.decorators import login_required
+from authapp import views
 
 # Create your views here.
+@login_required
 def wallet(request):
     return render(request, 'dashboard/wallet.html')
 
 @login_required
 def chart(request):
-    
     datetime_today = date.today()
     date_today = str(datetime_today)
     date_10daysago = str(datetime_today - timedelta(days=20))

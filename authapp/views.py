@@ -51,7 +51,7 @@ def register(request):
 
 def logout_user(request):
     logout(request)
-    return redirect('loginuser')
+    return redirect('/')
 
 def reset_password(request):
     return render(request, "authapp/reset-password.html")
