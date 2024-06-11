@@ -10,7 +10,27 @@ from django.contrib.auth import logout
 @login_required
 def wallet(request):
     api_url = 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,BNB,SOL&tsyms=USD'
-    api_historial = 'https://min-api.cryptocompare.com/data/v2/histohour?fsym=BTC&tsym=USD&limit=20'
+    api_historial = 'https://min-api.cryptocompare.com/data/v2/histohour'
+    params = {'fsym': 'BTC',
+              'tsym': 'USD',
+              'limit': 30}
+    historial_response = requests.get(api_historial, params=params)
+    data = historial_response.json()
+
+    if 'Data' in data and 'Data' in data['Data']:
+        daily_data = data['Data']['Data']
+        result = []
+        for day_data in daily_data:
+            result.append({
+                'time': day_data['time'],
+                'open': day_data['open'],
+                'close': day_data['close']
+
+            })
+            return result 
+    else:
+        raise ValueError("Unexpected response format or data not available")
+        
     try:
         response = requests.get(api_url)
         response.raise_for_status()
